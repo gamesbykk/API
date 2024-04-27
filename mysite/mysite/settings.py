@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,8 +25,7 @@ SECRET_KEY = "django-insecure-_&v3@*@_smgilg$olp2cg_&7cpra)mixj5u=#u3+-*85q6ta6k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS=["http://*.on-acorn.io","https://*.on-acorn.io"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -79,15 +77,10 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("MARIADB_DATABASE"),
-        "USER": os.getenv("MARIADB_USER"),
-        "PASSWORD": os.getenv("MARIADB_ROOT_PASSWORD"),
-        "HOST": os.getenv("MARIADB_HOST"),
-        "PORT": os.getenv("MARIADB_PORT", 3306),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 
 # Password validation
